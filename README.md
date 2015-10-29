@@ -16,4 +16,6 @@ npm install --save-dev   (写入devDepandencies）
 ## 使用举例
 
 - github 创建新仓库 nej-study
--
+- git clone git@github.com:mejustme/project-demo.git  nej-study
+- git remote remove origin
+- git remote add origin git@github.com:mejustme/nej-study.git
