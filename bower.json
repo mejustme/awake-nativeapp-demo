@@ -15,6 +15,6 @@
   ],
   "dependencies": {
     "jquery": "~2.1.4",
-    "when": "~3.7.3"
+    "underscore": "~1.8.3"
   }
 }
