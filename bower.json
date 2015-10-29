@@ -1,0 +1,20 @@
+{
+  "name": "static-gulp",
+  "version": "0.0.0",
+  "authors": [
+    "lianxu <qinhui.cqh@alibaba-inc.com>"
+  ],
+  "description": "bower管理浏览器中运行的库",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "when": "~3.7.3"
+  }
+}
