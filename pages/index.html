@@ -9,7 +9,7 @@
         list-style: none;
     }
     #j-button{
-       margin-left: 40px;
+        margin-left: 40px;
     }
 </style>
 <body>
@@ -18,13 +18,26 @@
     <li>lessonId： <input id="j-lessonId" type="text" value="1143244"/></li>
 </ul>
 <input id="j-button" type="button" value="打开app"/>
+<p id="j-url">
+
+</p>
+<p id="j-platform">
+
+</p>
 </body>
 <script src="../../bower_components/jquery/dist/jquery.js"></script>
 <script>
-    function isAndroid(){
+    function getPlatform(){
         var testAndroid = /(android)/ig;
+        var testIphone = /(iphone)/ig;
         var useragent = navigator.userAgent.toLowerCase();
-        return testAndroid.test(useragent);
+        if(testAndroid.test(useragent)){
+            return "android"
+        }else if(testIphone.test(useragent)){
+            return "iphone";
+        }else{
+            return "pc";
+        }
     }
     function openApp(param){
         if(!param.courseId || !param.lessonId){
@@ -34,12 +47,18 @@
         var _frame = document.createElement("iframe");
         _frame.setAttribute("style", "position: absolute;top:150px;left:5px;right:100px;bottom:200px;");
         var url = '';
-        if(isAndroid){
+        var platform = getPlatform();
+        if(platform == 'android'){
             url = 'yktaphone://open.lesson.ykt/'+param.courseId+'_'+param.lessonId;
-        }else{
+        }else if(platform == 'iphone'){
             url = 'yktiphone://type=4-&-content='+param.courseId+'_'+param.lessonId;
+        }else{
+            $("#j-platform").text(platform);
+            return;
         }
         _frame.src = url ;
+        $("#j-url").text(url);
+        $("#j-platform").text(platform);
         document.body.appendChild(_frame);
     }
     function doClick(){
