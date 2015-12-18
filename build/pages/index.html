@@ -20,6 +20,7 @@
 <a href="yktiphone://">YKT打开</a>
 <a href="yktiphone://type=-1-&-url=http://study.163.com">YKT打开页面</a>
 <a href="yktiphone://type=3-&-id=136001">YKT打开课程</a>
+<a href="yktiphone://type=4-&-content=381006_1143244">YKTtest</a>
 <input id="j-button" type="button" value="打开app"/>
 <p id="j-url">
 
@@ -59,7 +60,7 @@
             $("#j-platform").text(platform);
             return;
         }
-        _frame.src = 'yktiphone://type=-1-&-url=http://study.163.com';
+        _frame.src = url;
         $("#j-url").text(url);
         $("#j-platform").text(platform);
         $("iframe").remove();
