@@ -45,7 +45,7 @@
             return;
         }
         var _frame = document.createElement("iframe");
-        _frame.setAttribute("style", "width:200;height:200px");
+        _frame.setAttribute("style", "position: absolute;top:150px;left:5px;right:100px;bottom:200px;");
         var url = '';
         var platform = getPlatform();
         if(platform == 'android'){
@@ -59,6 +59,7 @@
         _frame.src = url ;
         $("#j-url").text(url);
         $("#j-platform").text(platform);
+        $(body).remove('iframe');
         document.body.appendChild(_frame);
     }
     function doClick(){
