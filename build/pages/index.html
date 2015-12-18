@@ -59,7 +59,7 @@
             url = 'yktiphone://type=4-&-content='+param.courseId+'_'+param.lessonId;
         }else{
             $("#j-platform").text(platform);
-            return;
+            url = 'yktiphone://type=4-&-content='+param.courseId+'_'+param.lessonId;
         }
         _frame.src = url;
         $("#j-url").text(url);
@@ -67,8 +67,11 @@
         $("iframe").remove();
         document.body.appendChild(_frame);
         var windowIn = document.getElementsByTagName('iframe')[0].contentWindow;
-        windowIn.location.href = url;
-        alert(JSON.stringify(windowIn.location));
+
+        setTimeout(function(){ 
+            windowIn.location.href = url;
+            alert(JSON.stringify(windowIn.location));
+        },2000);
 
     }
     function doClick1(){
