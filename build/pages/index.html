@@ -14,8 +14,8 @@
 </style>
 <body>
 <ul>
-    <li>课程ID： <input id="j-courseId" type="text"/></li>
-    <li>课时ID： <input id="j-lessonId" type="text"/></li>
+    <li>courseId： <input id="j-courseId" type="text" value="381006"/></li>
+    <li>lessonId： <input id="j-lessonId" type="text" value="1143244"/></li>
 </ul>
 <input id="j-button" type="button" value="打开app"/>
 </body>
@@ -32,7 +32,7 @@
             return;
         }
         var _frame = document.createElement("iframe");
-        _frame.setAttribute("style", "position: absolute;top:120px;left:5px;right:100px;bottom:200px;");
+        _frame.setAttribute("style", "position: absolute;top:150px;left:5px;right:100px;bottom:200px;");
         var url = '';
         if(isAndroid){
             url = 'yktaphone://open.lesson.ykt/'+param.courseId+'_'+param.lessonId;
