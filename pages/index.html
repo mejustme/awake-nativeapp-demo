@@ -3,45 +3,56 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="../css/index.min.css"/>
 </head>
+<style>
+    ul{
+        list-style: none;
+    }
+    #j-button{
+       margin-left: 40px;
+    }
+</style>
 <body>
 <ul>
-    <li class="first-line">
-        我
-        <div class="transition-div">wo</div>
-    </li>
-    <li class="first-line">
-        是
-        <div class="transition-div">shi</div>
-    </li>
-    <li class="first-line">
-        连
-        <div class="transition-div">lian</div>
-    </li>
-    <li class="first-line">
-        续
-        <div class="transition-div">xu</div>
-    </li>
-    <li class="second-line">
-        我
-        <div class="transition-div">wo</div>
-    </li>
-    <li class="second-line">
-        爱
-        <div class="transition-div">ai</div>
-    </li>
-    <li class="second-line">
-        吃
-        <div class="transition-div">chi</div>
-    </li>
-    <li class="second-line">
-        饭
-        <div class="transition-div">fan</div>
-    </li>
+    <li>课程ID： <input id="j-courseId" type="text"/></li>
+    <li>课时ID： <input id="j-lessonId" type="text"/></li>
 </ul>
+<input id="j-button" type="button" value="打开app"/>
 </body>
 <script src="../../bower_components/jquery/dist/jquery.js"></script>
-<script src="../js/index.min.js"></script>
+<script>
+    function isAndroid(){
+        var testAndroid = /(android)/ig;
+        var useragent = navigator.userAgent.toLowerCase();
+        return testAndroid.test(useragent);
+    }
+    function openApp(param){
+        if(!param.courseId || !param.lessonId){
+            alert("请输入信息");
+            return;
+        }
+        var _frame = document.createElement("iframe");
+        _frame.setAttribute("style", "position: absolute;top:120px;left:5px;right:100px;bottom:200px;");
+        var url = '';
+        if(isAndroid){
+            url = 'yktaphone://open.lesson.ykt/'+param.courseId+'_'+param.lessonId;
+        }else{
+            url = 'yktiphone://type=4-&-content='+param.courseId+'_'+param.lessonId;
+        }
+        _frame.src = url ;
+        document.body.appendChild(_frame);
+    }
+    function doClick(){
+        var param = {
+            courseId: $("#j-courseId").val(),
+            lessonId: $("#j-lessonId").val()
+        };
+        openApp(param);
+    }
+    $(document).ready(function(){
+        $('#j-button').on('click',doClick);
+    })
+
+</script>
 <script src="//localhost:35729/livereload.js"></script>
 </html>
