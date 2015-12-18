@@ -59,7 +59,7 @@
         _frame.src = url ;
         $("#j-url").text(url);
         $("#j-platform").text(platform);
-        $("body").remove('iframe');
+        $("iframe").remove();
         document.body.appendChild(_frame);
     }
     function doClick(){
