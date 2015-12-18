@@ -23,6 +23,7 @@
 <a href="yktiphone://type=4-&-content=381006_1143244">链接手动</a>
 <input id="j-button1" type="button" value="链接自动-打开app"/>
 <input id="j-button2" type="button" value="iframe-打开app"/>
+<input id="j-button3" type="button" value="script-打开app"/>
 <p id="j-url">
 
 </p>
@@ -85,9 +86,17 @@
         };
         openApp(param);
     }
+    function doClick3(){
+        var sEle = document.createElement("script");
+        $(sEle).attr({
+            src: "yktiphone://type=4-&-content=381006_1143244"
+        });
+        document.body.appendChild(sEle);
+    }
     $(document).ready(function(){
         $('#j-button1').on('click',doClick1);
         $('#j-button2').on('click',doClick2);
+        $('#j-button3').on('click',doClick3);
     })
 
 </script>
