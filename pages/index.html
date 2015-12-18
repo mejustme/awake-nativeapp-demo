@@ -73,6 +73,9 @@
             href: "yktiphone://type=4-&-content=381006_1143244"
         }).text("自动触发链接");
         document.body.appendChild(aEle);
+        $(aEle).on('click',function(){
+            alert("js自动触发了链接click")
+        })
         $(aEle).trigger("click");
     }
     function doClick2(){
