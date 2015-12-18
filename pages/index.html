@@ -17,10 +17,12 @@
     <li>courseId： <input id="j-courseId" type="text" value="381006"/></li>
     <li>lessonId： <input id="j-lessonId" type="text" value="1143244"/></li>
 </ul>
-<a href="yktiphone://">YKT打开</a>
+<!--<a href="yktiphone://">YKT打开</a>
 <a href="yktiphone://type=-1-&-url=http://study.163.com">YKT打开页面</a>
-<a href="yktiphone://type=3-&-id=136001">YKT打开课程</a>
-<input id="j-button" type="button" value="打开app"/>
+<a href="yktiphone://type=3-&-id=136001">YKT打开课程</a>-->
+<a href="yktiphone://type=4-&-content=381006_1143244">链接手动</a>
+<input id="j-button1" type="button" value="链接自动-打开app"/>
+<input id="j-button2" type="button" value="iframe-打开app"/>
 <p id="j-url">
 
 </p>
@@ -59,13 +61,21 @@
             $("#j-platform").text(platform);
             return;
         }
-        _frame.src = url ;
+        _frame.src = url;
         $("#j-url").text(url);
         $("#j-platform").text(platform);
         $("iframe").remove();
         document.body.appendChild(_frame);
     }
-    function doClick(){
+    function doClick1(){
+        var aEle = document.createElement("a");
+        $(aEle).attr({
+            href: "yktiphone://type=4-&-content=381006_1143244"
+        })
+        document.body.appendChild(aEle);
+        $(aEle).trigger("click");
+    }
+    function doClick2(){
         var param = {
             courseId: $("#j-courseId").val(),
             lessonId: $("#j-lessonId").val()
@@ -73,7 +83,8 @@
         openApp(param);
     }
     $(document).ready(function(){
-        $('#j-button').on('click',doClick);
+        $('#j-button1').on('click',doClick1);
+        $('#j-button2').on('click',doClick2);
     })
 
 </script>
